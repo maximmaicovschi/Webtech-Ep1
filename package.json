@@ -1,0 +1,30 @@
+{
+  "name": "tournaments",
+  "version": "1.0.0",
+  "description": "webtech project - tournament organizer app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maximmaicovschi/Webtech-Ep1.git"
+  },
+  "author": "Maxim Maicovschi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maximmaicovschi/Webtech-Ep1/issues"
+  },
+  "homepage": "https://github.com/maximmaicovschi/Webtech-Ep1#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
+    "nodeadmin": "^0.1.2",
+    "sequelize": "^4.31.0"
+  },
+  "devDependencies": {}
+}
