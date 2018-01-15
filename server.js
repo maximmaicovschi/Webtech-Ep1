@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var nodeadmin = require('nodeadmin'); 
 var Sequelize = require("sequelize");
+var igdb = require('igdb-api-node').default;
 
 // init sequelize connection 
 var sequelize = new Sequelize('tournamentDatabase', 'mtmaxim', '', { 
@@ -187,5 +188,70 @@ app.get('/tournaments/:id/championships', function(request, response) {
             }
         )
 })
+
+//external api calls
+
+const client = igdb('67abeb8c26a6fa5592de902ec7b2f09a');
+    
+//retrieving all the information regarding Top Gun Flight Simulator
+app.get('/topgun', function(request, response) {
+    client.games({
+        fields: '*', 
+        limit: 5, 
+        offset: 15 
+    }).then(function(client){
+        response.status(200).send(client);
+    })
+})
+//returning all companies that have blizzard included in their name
+app.get('/blizzard', function(request, response) {
+    client.companies({
+        field: 'name',
+        limit: 5,
+        offset: 0,
+        order: 'name:desc',
+        search: 'blizzard'
+    }, [
+        'name',
+        'logo'
+    ]).then(function(client){
+        response.status(200).send(client);
+    })
+})
+//retrieving all the zelda games published between 2010 and 2012
+app.get('/zelda', function(request, response) {
+    client.games({
+        filters: {
+            'release_dates.date-gt': '2010-12-31',
+            'release_dates.date-lt': '2012-01-01'
+        },
+        limit: 5,
+        offset: 0,
+        order: 'release_dates.date:desc',
+        search: 'zelda'
+    }, [
+        'name',
+        'release_dates.date',
+        'rating',
+        'hypes',
+        'cover'
+    ]).then(function(client){
+        response.status(200).send(client);
+    })
+})
+//all the game id's that work on Atari
+app.get('/platform', function(request, response) {
+    client.platforms({
+        limit: 10,
+        search: 'Atari'
+    }, [
+        'name',
+        'games'
+    ]).then(function(client){
+        response.status(200).send(client);
+    })
+})
+
+
 
 app.listen(process.env.PORT);
