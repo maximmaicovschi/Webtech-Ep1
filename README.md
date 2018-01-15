@@ -1,6 +1,7 @@
 # Tournaments & Championships API
 
 This is a simple API that allows the user to create, read, update and delete tournaments and championships.
+Edit: added some IGDB Endpoints I took from their API, this was done using the igdb-api-node package.
 
 ## IGDB API Endpoints
 View all information about a game (Top Gun Flight simulator used as example)
