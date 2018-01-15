@@ -2,6 +2,24 @@
 
 This is a simple API that allows the user to create, read, update and delete tournaments and championships.
 
+## IGDB API Endpoints
+View all information about a game (Top Gun Flight simulator used as example)
+```
+GET /topgun
+```
+View all companies that have blizzard included in their name
+```
+GET /blizzard
+```
+View all the zelda games published between 2010 and 2012
+```
+GET /zelda
+```
+View all the game ids that work on a platform (Atari used as example)
+```
+GET /platform
+```
+
 ## API Endpoints
 Create a new tournament
 ```
